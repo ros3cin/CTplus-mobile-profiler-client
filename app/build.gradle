@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+        applicationId "cin.ufpe.br.energyprofiler"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    packagingOptions {
+        exclude 'LICENSE-EPL-1.0.txt'
+        exclude 'LICENSE-EDL-1.0.txt'
+    }
+}
+
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.volley:volley:1.0.0'
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+
+    // https://mvnrepository.com/artifact/io.gatling/jsr166e
+    compile group: 'io.gatling', name: 'jsr166e', version: '1.0'
+    // https://mvnrepository.com/artifact/org.eclipse.collections/eclipse-collections
+    compile group: 'org.eclipse.collections', name: 'eclipse-collections', version: '7.0.0'
+    // https://mvnrepository.com/artifact/org.eclipse.collections/eclipse-collections-api
+    compile group: 'org.eclipse.collections', name: 'eclipse-collections-api', version: '7.0.0'
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-collections4
+    compile group: 'org.apache.commons', name: 'commons-collections4', version: '4.1'
+
+
+    testCompile 'junit:junit:4.12'
+}
